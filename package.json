@@ -2,7 +2,7 @@
   "name": "ez-console-log",
   "displayName": "Easy Console.Log",
   "description": "easily add styled console.log messages",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "GabrielFleury",
   "repository": {
     "type": "git",
