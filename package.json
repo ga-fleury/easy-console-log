@@ -1,8 +1,8 @@
 {
   "name": "easy-console-log",
   "displayName": "Easy Console.Log",
-  "description": "easily add a styled console.log message",
-  "version": "0.0.2",
+  "description": "easily add styled console.log messages",
+  "version": "0.0.3",
   "publisher": "Gabriel Fleury",
   "repository": {
     "type": "git",
@@ -21,7 +21,12 @@
     "commands": [{
       "command": "easy-console-log.consoleLogComment",
       "title": "Add Console Log Comment"
-    }],
+    },
+    {
+      "command": "easy-console-log.commentOutConsoleLogs",
+      "title": "Comment Out Console Logs"
+    }
+],
     "keybindings": [
       {
         "command": "easy-console-log.consoleLogComment",
