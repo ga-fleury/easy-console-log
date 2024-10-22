@@ -80,19 +80,18 @@ function activate(context) {
           const textLine = document.lineAt(line);
           const lineText = textLine.text;
 
-          if (lineText.includes("console.log(")) {
-            const range = new vscode.Range(
-              line,
-              0,
-              line,
-              textLine.range.end.character
-            );
+		  const index = lineText.indexOf('console.log(');
 
-            if (!lineText.trim().startsWith("//")) {
-              const commentedText = "//" + lineText;
-              edit.replace(document.uri, range, commentedText);
-            }
-          }
+          if (index !== -1) {
+			const startCommentPos = new vscode.Position(line, index);
+			const range = new vscode.Range(startCommentPos, startCommentPos);
+  
+			// Check if the console.log already has a comment ('//') just before it
+			if (!lineText.substring(index - 2, index).includes('//')) {
+			  // Insert '//' at the start of 'console.log' to comment it out
+			  edit.insert(document.uri, startCommentPos, '// ');
+			}
+		  }
         }
 
         vscode.workspace.applyEdit(edit).then(() => {
