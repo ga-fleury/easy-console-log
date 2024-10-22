@@ -10,6 +10,8 @@ function activate(context) {
 
 	let disposable = vscode.commands.registerCommand('easy-console-log.consoleLogComment', async () => {
 	  const editor = vscode.window.activeTextEditor;
+	  const position = editor.selection.active;
+	  const currentLine = editor.document.lineAt(position.line);
 	  if (editor) {
 		const input = await vscode.window.showInputBox({
 		  prompt: 'Enter the message for console.log()'
@@ -29,12 +31,14 @@ function activate(context) {
 				  const logBgColor = await vscode.window.showInputBox({
 					prompt: 'enter a background color'
 				  });
-			  const position = editor.selection.active;
+			  
 			  const newPosition = position.with(position.line + 1, 0); // Go to the next line
 			  const edit = new vscode.WorkspaceEdit();
+			  const indent = currentLine.firstNonWhitespaceCharacterIndex;
+			  const indentString = currentLine.text.substring(0, indent);
 	
 			  // Insert the user's input into the console.log statement
-			  const lineText = `console.log("%c${input}", "color: ${logColor}; background-color: ${logBgColor}");\n`;
+			  const lineText = `${indentString}console.log("%c${input}", "color: ${logColor}; background-color: ${logBgColor}");\n`;
 	
 			  // Insert the new text at the calculated position
 			  edit.insert(editor.document.uri, newPosition, lineText);
@@ -45,7 +49,9 @@ function activate(context) {
 				const position = editor.selection.active;
 			  const newPosition = position.with(position.line + 1, 0); // Go to the next line
 			  const edit = new vscode.WorkspaceEdit();
-			  const lineText = `console.log("${input}");\n`;
+			  const indent = currentLine.firstNonWhitespaceCharacterIndex;
+			  const indentString = currentLine.text.substring(0, indent);
+			  const lineText = `${indentString}console.log("${input}");\n`;
 	
 			  // Insert the new text at the calculated position
 			  edit.insert(editor.document.uri, newPosition, lineText);
