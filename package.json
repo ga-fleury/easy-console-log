@@ -3,7 +3,7 @@
   "displayName": "Easy Console.Log",
   "description": "easily add styled console.log messages",
   "version": "0.0.3",
-  "publisher": "Gabriel Fleury",
+  "publisher": "GabrielFleury",
   "repository": {
     "type": "git",
     "url": "https://github.com/ga-fleury/easy-console-log"
