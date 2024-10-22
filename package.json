@@ -1,0 +1,40 @@
+{
+  "name": "easy-console-log",
+  "displayName": "Easy Console.Log",
+  "description": "easily add a styled console.log message",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [{
+      "command": "easy-console-log.consoleLogComment",
+      "title": "Add Console Log Comment"
+    }],
+    "keybindings": [
+      {
+        "command": "easy-console-log.consoleLogComment",
+        "key": "ctrl+alt+.", 
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.94.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "eslint": "^9.13.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
