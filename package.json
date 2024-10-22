@@ -3,6 +3,12 @@
   "displayName": "Easy Console.Log",
   "description": "easily add a styled console.log message",
   "version": "0.0.1",
+  "publisher": "Gabriel Fleury",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ga-fleury/easy-console-log"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.94.0"
   },
